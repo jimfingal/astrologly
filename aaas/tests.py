@@ -28,5 +28,27 @@ class APITest(unittest.TestCase):
         self.app = app.get_app().test_client()
 
     def test_get_signs(self):
-        signs = json.loads(self.app.get("/signs/").data)
+        response = self.app.get("/signs/")
+        self.assertEqual(response.status_code, 200)
+
+        signs = json.loads(response.data)
         self.assertEqual(len(signs['data']), 12)
+
+    def test_get_sign(self):
+        for sign in signs.sign_list:
+            response = self.app.get("/signs/%s/" % sign.name.lower())
+            self.assertEqual(response.status_code, 200)
+
+    def test_get_sign_bad(self):
+        response = self.app.get("/signs/foo/")
+        self.assertEqual(response.status_code, 404)
+
+    def test_get_reading(self):
+        response = self.app.get("/natal/1983/1/31/")
+        self.assertEqual(response.status_code, 200)
+
+        data = json.loads(response.data)['data']
+
+        self.assertIn('sign', data)
+        self.assertIn('source', data)
+        self.assertEqual('aquarius', data['sign']['name'].lower())

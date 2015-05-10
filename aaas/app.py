@@ -2,6 +2,8 @@ from flask import Flask
 from flask import make_response
 from flask import jsonify
 
+from werkzeug import exceptions
+
 from functools import wraps
 import arrow
 import signs
@@ -19,7 +21,7 @@ def get_app():
 
     app = Flask(__name__)
 
-    @app.route('/r/<int:year>/<int:month>/<int:day>/')
+    @app.route('/natal/<int:year>/<int:month>/<int:day>/')
     @json_endpoint
     def reading(year, month, day):
 
@@ -39,6 +41,9 @@ def get_app():
 
         sign = signs.get_sign(month, day)
 
+        if sign is None:
+            raise Exception("Problem retrieving sign for %s, %s" % month, day)
+
         response['sign'] = sign._asdict()
 
         return response
@@ -57,16 +62,20 @@ def get_app():
     @json_endpoint
     def get_sign(name):
 
-        sign = signs.sign_map.get(name, None)
+        sign = signs.sign_map.get(name.lower(), None)
 
         if sign is None:
-            raise ValueError("No sign named: %s" % name)
+            raise exceptions.NotFound("No sign named: %s" % name)
 
         return sign._asdict()
 
     @app.errorhandler(ValueError)
     def value_error(error):
         return make_response(jsonify({'error': str(error)}), 400)
+
+    @app.errorhandler(Exception)
+    def value_error(error):
+        return make_response(jsonify({'error': str(error)}), 500)
 
     @app.errorhandler(404)
     def not_found(error):
