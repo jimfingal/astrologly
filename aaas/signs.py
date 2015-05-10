@@ -79,3 +79,16 @@ def rising_diff(hour, minute):
         return -3
     else:
         raise ValueError("Problem with time: %s:%s" % hour, minute)
+
+
+def get_rising_sign(sign, hour, minute):
+
+    index = sign_index(sign)
+    diff = rising_diff(hour, minute)
+
+    current = index + diff
+
+    if current > len(sign_list):
+        current -= len(sign_list)
+
+    return sign_list[current]

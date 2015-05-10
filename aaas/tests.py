@@ -4,8 +4,6 @@ import unittest
 
 import app
 import signs
-import homepage
-
 
 class SignTest(unittest.TestCase):
 
@@ -65,6 +63,8 @@ class APITest(unittest.TestCase):
         self.assertEquals(6, signs.rising_diff(16, 01))
         self.assertEquals(-4, signs.rising_diff(21, 01))
 
-    def test_homepage(self):
-        home = homepage.get_homepage()
-        print home
+    def test_rising_sign(self):
+
+        self.assertEquals(signs.aries, signs.get_rising_sign(signs.aries, 5, 00))
+
+        """Aries   Taurus  Gemini  Cancer  Leo Virgo   Libra   Scorpio Sagittarius Capricorn   Aquarius    Pisces"""
