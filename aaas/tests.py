@@ -19,6 +19,31 @@ class SignTest(unittest.TestCase):
         self.assertEqual(signs.get_sign(1, 20), signs.capricorn)
         self.assertEqual(signs.get_sign(1, 21), signs.aquarius)
 
+    def test_sign_index(self):
+        index = signs.sign_index(signs.taurus)
+        self.assertEqual(index, 1)
+
+    def test_rising_diff(self):
+        self.assertEquals(-2, signs.rising_diff(0, 30))
+        self.assertEquals(0, signs.rising_diff(6, 00))
+        self.assertEquals(6, signs.rising_diff(16, 01))
+        self.assertEquals(-4, signs.rising_diff(21, 01))
+
+    def test_rising_sign(self):
+
+        self.assertEquals(signs.aquarius, signs.get_rising_sign(signs.aries, 1, 00))
+        self.assertEquals(signs.pisces, signs.get_rising_sign(signs.aries, 3, 00))
+        self.assertEquals(signs.aries, signs.get_rising_sign(signs.aries, 5, 00))
+        self.assertEquals(signs.taurus, signs.get_rising_sign(signs.aries, 7, 00))
+        self.assertEquals(signs.gemini, signs.get_rising_sign(signs.aries, 9, 00))
+        self.assertEquals(signs.cancer, signs.get_rising_sign(signs.aries, 11, 00))
+        self.assertEquals(signs.leo, signs.get_rising_sign(signs.aries, 13, 00))
+        self.assertEquals(signs.virgo, signs.get_rising_sign(signs.aries, 15, 00))
+        self.assertEquals(signs.libra, signs.get_rising_sign(signs.aries, 17, 00))
+        self.assertEquals(signs.scorpio, signs.get_rising_sign(signs.aries, 19, 00))
+        self.assertEquals(signs.sagittarius, signs.get_rising_sign(signs.aries, 21, 00))
+        self.assertEquals(signs.capricorn, signs.get_rising_sign(signs.aries, 23, 00))
+
 
 class APITest(unittest.TestCase):
 
@@ -53,18 +78,15 @@ class APITest(unittest.TestCase):
         self.assertIn('sun', data['signs'])
         self.assertEqual('aquarius', data['signs']['sun']['name'].lower())
 
-    def test_sign_index(self):
-        index = signs.sign_index(signs.taurus)
-        self.assertEqual(index, 1)
+    def test_get_full_reading(self):
+        response = self.app.get("/natal/1983/1/31/12/45/")
+        self.assertEqual(response.status_code, 200)
 
-    def test_rising_diff(self):
-        self.assertEquals(-2, signs.rising_diff(0, 30))
-        self.assertEquals(0, signs.rising_diff(6, 00))
-        self.assertEquals(6, signs.rising_diff(16, 01))
-        self.assertEquals(-4, signs.rising_diff(21, 01))
+        data = json.loads(response.data)['data']
 
-    def test_rising_sign(self):
-
-        self.assertEquals(signs.aries, signs.get_rising_sign(signs.aries, 5, 00))
-
-        """Aries   Taurus  Gemini  Cancer  Leo Virgo   Libra   Scorpio Sagittarius Capricorn   Aquarius    Pisces"""
+        self.assertIn('signs', data)
+        self.assertIn('source', data)
+        self.assertIn('sun', data['signs'])
+        self.assertIn('rising', data['signs'])
+        self.assertEqual('aquarius', data['signs']['sun']['name'].lower())
+        self.assertEqual('gemini', data['signs']['rising']['name'].lower()) 

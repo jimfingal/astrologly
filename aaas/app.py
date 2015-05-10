@@ -34,7 +34,8 @@ def create_app():
     def reading(year, month, day, hour, minute):
 
         date = arrow.get(year, month, day, hour, minute)
-        base_response = divination.get_base_reading(date)
+        response = divination.get_full_reading(date)
+        return response
 
     @app.route('/natal/<int:year>/<int:month>/<int:day>/')
     @json_endpoint
