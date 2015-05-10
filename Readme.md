@@ -142,6 +142,14 @@ GET [https://astrologly.herokuapp.com/natal/1983/01/31/12/45/ ](https://astrolog
 {
   "data": {
     "signs": {
+      "rising": {
+        "description": "The Twins", 
+        "element": "Air", 
+        "end": "June 21", 
+        "name": "Gemini", 
+        "quality": "Mutable", 
+        "start": "May 21"
+      }, 
       "sun": {
         "description": "The Water Bearer", 
         "element": "Air", 
