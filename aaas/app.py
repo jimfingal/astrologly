@@ -5,9 +5,11 @@ from flask import jsonify
 from werkzeug import exceptions
 
 from functools import wraps
-import arrow
-import signs
 
+import arrow
+
+import signs
+import divination
 
 def json_endpoint(f):
     @wraps(f)
@@ -16,37 +18,23 @@ def json_endpoint(f):
         return make_response(jsonify({'data': response}))
     return decorated
 
-
 def create_app():
 
     app = Flask(__name__)
 
+    @app.route('/natal/<int:year>/<int:month>/<int:day>/<int:hour>/<int:minute>/')
+    @json_endpoint
+    def reading(year, month, day, hour, minute):
+
+        date = arrow.get(year, month, day, hour, minute)
+        base_response = divination.get_base_reading(date)
+
     @app.route('/natal/<int:year>/<int:month>/<int:day>/')
     @json_endpoint
-    def reading(year, month, day):
+    def day_reading(year, month, day):
 
-        response = {}
-        response['source'] = {}
-
-        date = {
-            'year': year,
-            'month': month,
-            'day': day
-        }
-
-        response['source']['date'] = date
-        arrowed = arrow.get(year, month, day)
-        response['source']['humanized'] = arrowed.humanize()
-        response['source']['verbose']  = arrowed.format('dddd MMMM D, YYYY')
-
-        sun_sign = signs.get_sign(month, day)
-
-        if sun_sign is None:
-            raise Exception("Problem retrieving sign for %s, %s" % month, day)
-
-        response['signs'] = {}
-
-        response['signs']['sun'] = sun_sign._asdict()
+        date = arrow.get(year, month, day)
+        response = divination.get_base_reading(date)
 
         return response
 
