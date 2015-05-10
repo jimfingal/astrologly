@@ -3,9 +3,9 @@
 
 Astrologly is the first AAAS (Astrology as a Service) application.
 
-We're changing disrupting the divination industry through offering elegant, REST-like APIs on top of deep occult knowledge graphs.
+We're disrupting the divination industry through offering elegant, REST-like APIs on top of deep occult knowledge graphs.
 
-We are dedicated to our craft and practice Taurus-driven development (TDD) a software development process that relies on the Taurus's slowness to anger and sensibility in practical decisions.
+We are dedicated to our craft and practice Taurus-driven development (TDD), a software development process that relies on the Taurus's slowness to anger and sensibility in practical decisions.
 
 
 ## API Usage
