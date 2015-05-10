@@ -4,6 +4,7 @@ import unittest
 
 import app
 import signs
+import homepage
 
 
 class SignTest(unittest.TestCase):
@@ -63,3 +64,7 @@ class APITest(unittest.TestCase):
         self.assertEquals(0, signs.rising_diff(6, 00))
         self.assertEquals(6, signs.rising_diff(16, 01))
         self.assertEquals(-4, signs.rising_diff(21, 01))
+
+    def test_homepage(self):
+        home = homepage.get_homepage()
+        print home

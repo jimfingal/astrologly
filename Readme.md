@@ -12,9 +12,8 @@ We are dedicated to our craft and practice Taurus-driven development (TDD), a so
 
 **Base Endpoint:**
 
-```http
-https://astrologly.herokuapp.com/
-```
+
+[https://astrologly.herokuapp.com](https://astrologly.herokuapp.com/)
 
 **API Key:**
 
@@ -37,9 +36,7 @@ Example:
 
 **Example Query:**
 
-```http
-GET https://astrologly.herokuapp.com/signs/aries/
-```
+GET [https://astrologly.herokuapp.com/signs/aries/ ](https://astrologly.herokuapp.com/signs/aries/)
 
 **Example Response:**
 
@@ -60,9 +57,7 @@ GET https://astrologly.herokuapp.com/signs/aries/
 
 **Example Query:**
 
-```http
-GET https://astrologly.herokuapp.com/signs/
-```
+GET [https://astrologly.herokuapp.com/signs/ ](https://astrologly.herokuapp.com/signs/)
 
 **Example Response:**
 
@@ -94,15 +89,11 @@ GET https://astrologly.herokuapp.com/signs/
 
 **Format:**
 
-```http
-/natal/<year>/<month>/<day>/
-```
+/natal/{year}/{month}/{day}/
 
 **Example Query:**
 
-```http
-GET https://astrologly.herokuapp.com/natal/1983/01/31/
-```
+GET [https://astrologly.herokuapp.com/natal/1983/01/31/ ](https://astrologly.herokuapp.com/natal/1983/01/31/)
 
 **Example Response:**
 
