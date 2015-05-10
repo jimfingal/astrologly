@@ -1,5 +1,5 @@
 import signs
-
+import moonsign
 
 def get_base_reading(parsed_date):
 
@@ -31,6 +31,12 @@ def get_full_reading(parsed_date):
     response['signs'] = {}
     response['signs']['sun'] = sun_sign._asdict()
     response['signs']['rising'] = rising_sign._asdict()
+
+    try:
+       response['signs']['moon'] =  moonsign.get_moon_sign(parsed_date)._asdict()
+    except Exception as e:
+        print e
+        pass
 
     return response
 

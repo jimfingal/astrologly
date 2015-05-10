@@ -1,9 +1,11 @@
 from flask import json
 
 import unittest
+import arrow
 
 import app
 import signs
+import moonsign
 
 class SignTest(unittest.TestCase):
 
@@ -43,6 +45,10 @@ class SignTest(unittest.TestCase):
         self.assertEquals(signs.scorpio, signs.get_rising_sign(signs.aries, 19, 00))
         self.assertEquals(signs.sagittarius, signs.get_rising_sign(signs.aries, 21, 00))
         self.assertEquals(signs.capricorn, signs.get_rising_sign(signs.aries, 23, 00))
+
+    def test_moon_sign(self):
+        self.assertEqual(moonsign.get_moon_sign(arrow.get(1900, 1, 3)).name, 'Pisces')
+        self.assertEqual(moonsign.get_moon_sign(arrow.get(1983, 1, 31)).name, 'Libra')
 
 
 class APITest(unittest.TestCase):
@@ -88,5 +94,7 @@ class APITest(unittest.TestCase):
         self.assertIn('source', data)
         self.assertIn('sun', data['signs'])
         self.assertIn('rising', data['signs'])
+        self.assertIn('moon', data['signs'])
         self.assertEqual('aquarius', data['signs']['sun']['name'].lower())
         self.assertEqual('gemini', data['signs']['rising']['name'].lower()) 
+        self.assertEqual('libra', data['signs']['moon']['name'].lower()) 
