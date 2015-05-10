@@ -28,7 +28,7 @@ class APITest(unittest.TestCase):
         self.app = app.get_app().test_client()
 
     def test_get_signs(self):
-        response = self.app.get("/signs/")
+        response = self.app.get("/signs/?apikey=123")
         self.assertEqual(response.status_code, 200)
 
         signs = json.loads(response.data)
@@ -49,6 +49,7 @@ class APITest(unittest.TestCase):
 
         data = json.loads(response.data)['data']
 
-        self.assertIn('sign', data)
+        self.assertIn('signs', data)
         self.assertIn('source', data)
-        self.assertEqual('aquarius', data['sign']['name'].lower())
+        self.assertIn('sun', data['signs'])
+        self.assertEqual('aquarius', data['signs']['sun']['name'].lower())

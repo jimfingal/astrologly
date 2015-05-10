@@ -39,12 +39,14 @@ def get_app():
         response['source']['humanized'] = arrowed.humanize()
         response['source']['verbose']  = arrowed.format('dddd MMMM D, YYYY')
 
-        sign = signs.get_sign(month, day)
+        sun_sign = signs.get_sign(month, day)
 
-        if sign is None:
+        if sun_sign is None:
             raise Exception("Problem retrieving sign for %s, %s" % month, day)
 
-        response['sign'] = sign._asdict()
+        response['signs'] = {}
+
+        response['signs']['sun'] = sun_sign._asdict()
 
         return response
 
