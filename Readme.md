@@ -5,13 +5,14 @@ Astrologly is the first AAAS (Astrology as a Service) application.
 
 We're changing disrupting the divination industry through offering elegant, REST-like APIs on top of deep occult knowledge graphs.
 
+About us
 
 
 # Endpoints
 
-## Signs
+### Signs
 
-###Get:
+####Get:
 
 Example Query:
 
@@ -34,7 +35,7 @@ Example Response:
 }
 ```
 
-###List:
+####List:
 
 Example Query:
 

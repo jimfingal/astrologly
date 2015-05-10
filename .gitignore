@@ -16,3 +16,6 @@ nosetests.xml
 coverage.xml
 *,cover
 cover/
+
+data
+planning
