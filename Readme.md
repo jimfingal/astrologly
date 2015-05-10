@@ -78,13 +78,13 @@ Example Response:
 Format:
 
 ```http
-/<year>/<month>/<day>/
+/natal/<year>/<month>/<day>/
 ```
 
 Example Query:
 
 ```http
-GET https://astrologly.herokuapp.com/1983/01/31/
+GET https://astrologly.herokuapp.com/natal/1983/01/31/
 ```
 
 Example Response:
