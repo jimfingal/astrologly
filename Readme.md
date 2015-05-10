@@ -31,7 +31,7 @@ Example:
 ```
 
 
-### Signs
+## Signs Endpoint
 
 ####Get:
 
@@ -90,7 +90,7 @@ GET https://astrologly.herokuapp.com/signs/
 ```
 
 
-## Natal Reading
+## Natal Reading  Endpoint
 
 **Format:**
 
