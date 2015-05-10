@@ -17,7 +17,7 @@ We are dedicated to our craft and practice Taurus-driven development (TDD), a so
 
 **API Key:**
 
-Your API key is determined by taking the MD5 hash of the year, month, day, and military time of your birth, encoded in url-safe base64.
+Your API key is determined by taking the MD5 hash of the year, month, day, and military time of your birth, encoded in url-safe base64. MD5 is totally secure because it is an irreversible hash. Rate-limiting will be determined by the Quincunx aspect of your API key.
 
 Example:
 
@@ -79,13 +79,16 @@ GET [https://astrologly.herokuapp.com/signs/ ](https://astrologly.herokuapp.com/
       "name": "Taurus", 
       "quality": "Fixed", 
       "start": "April 20"
-    },
-...
-]
+    }
+    ...
+  ]
+}
 ```
 
 
 ## Natal Reading  Endpoint
+
+#### Basic
 
 **Format:**
 
@@ -94,6 +97,44 @@ GET [https://astrologly.herokuapp.com/signs/ ](https://astrologly.herokuapp.com/
 **Example Query:**
 
 GET [https://astrologly.herokuapp.com/natal/1983/01/31/ ](https://astrologly.herokuapp.com/natal/1983/01/31/)
+
+**Example Response:**
+
+```json
+{
+  "data": {
+    "signs": {
+      "sun": {
+        "description": "The Water Bearer", 
+        "element": "Air", 
+        "end": "February 21", 
+        "name": "Aquarius", 
+        "quality": "Fixed", 
+        "start": "January 21"
+      }
+    }, 
+    "source": {
+      "date": {
+        "day": 31, 
+        "month": 1, 
+        "year": 1983
+      }, 
+      "humanized": "32 years ago", 
+      "verbose": "Monday January 31, 1983"
+    }
+  }
+}
+```
+
+#### Full
+
+**Format:**
+
+/natal/{year}/{month}/{day}/{hour}/{minute}/
+
+**Example Query:**
+
+GET [https://astrologly.herokuapp.com/natal/1983/01/31/12/45/ ](https://astrologly.herokuapp.com/natal/1983/01/31/12/45/)
 
 **Example Response:**
 
