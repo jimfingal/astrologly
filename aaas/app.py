@@ -17,7 +17,7 @@ def json_endpoint(f):
     return decorated
 
 
-def get_app():
+def create_app():
 
     app = Flask(__name__)
 

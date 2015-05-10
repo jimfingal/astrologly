@@ -25,7 +25,7 @@ class APITest(unittest.TestCase):
 
     def setUp(self):
 
-        self.app = app.get_app().test_client()
+        self.app = app.create_app().test_client()
 
     def test_get_signs(self):
         response = self.app.get("/signs/?apikey=123")
