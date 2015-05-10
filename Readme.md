@@ -5,11 +5,15 @@ Astrologly is the first AAAS (Astrology as a Service) application.
 
 We're changing disrupting the divination industry through offering elegant, REST-like APIs on top of deep occult knowledge graphs.
 
-About us
+We are dedicated to our craft and practice Taurus-driven development (TDD) a software development process that relies on the Taurus's slowness to anger and sensibility in practical decisions.
 
 
-# Endpoints
+## API Usage
 
+Base Endpoint:
+```http
+https://astrologly.herokuapp.com/
+```
 ### Signs
 
 ####Get:
@@ -17,7 +21,7 @@ About us
 Example Query:
 
 ```http
-GET /signs/aries/
+GET https://astrologly.herokuapp.com/signs/aries/
 ```
 
 Example Response:
@@ -40,7 +44,7 @@ Example Response:
 Example Query:
 
 ```http
-GET /signs/
+GET https://astrologly.herokuapp.com/signs/
 ```
 
 Example Response:
@@ -80,7 +84,7 @@ Format:
 Example Query:
 
 ```http
-GET /1983/01/31/
+GET https://astrologly.herokuapp.com/1983/01/31/
 ```
 
 Example Response:
