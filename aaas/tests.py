@@ -53,3 +53,13 @@ class APITest(unittest.TestCase):
         self.assertIn('source', data)
         self.assertIn('sun', data['signs'])
         self.assertEqual('aquarius', data['signs']['sun']['name'].lower())
+
+    def test_sign_index(self):
+        index = signs.sign_index(signs.taurus)
+        self.assertEqual(index, 1)
+
+    def test_rising_diff(self):
+        self.assertEquals(-2, signs.rising_diff(0, 30))
+        self.assertEquals(0, signs.rising_diff(6, 00))
+        self.assertEquals(6, signs.rising_diff(16, 01))
+        self.assertEquals(-4, signs.rising_diff(21, 01))

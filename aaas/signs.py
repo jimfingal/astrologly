@@ -42,3 +42,40 @@ def get_sign(month, day):
             return sign
         elif fake_day >= start and fake_day <= end:
             return sign
+
+
+def sign_index(sign):
+    index = sign_list.index(sign)
+    return index
+
+
+def rising_diff(hour, minute):
+
+    fake_day = arrow.get(0001, 1, 1, hour, minute)
+
+    if fake_day <= arrow.get(0001, 1, 1, 2, 0):
+        return -2
+    elif fake_day <= arrow.get(0001, 1, 1, 4, 0):
+        return -1
+    elif fake_day <= arrow.get(0001, 1, 1, 6, 0):
+        return 0
+    elif fake_day <= arrow.get(0001, 1, 1, 8, 0):
+        return 1
+    elif fake_day <= arrow.get(0001, 1, 1, 10, 0):
+        return 2
+    elif fake_day <= arrow.get(0001, 1, 1, 12, 0):
+        return 3
+    elif fake_day <= arrow.get(0001, 1, 1, 14, 0):
+        return 4
+    elif fake_day <= arrow.get(0001, 1, 1, 16, 0):
+        return 5
+    elif fake_day <= arrow.get(0001, 1, 1, 18, 0):
+        return 6
+    elif fake_day <= arrow.get(0001, 1, 1, 20, 0):
+        return -5
+    elif fake_day <= arrow.get(0001, 1, 1, 22, 0):
+        return -4
+    elif fake_day < arrow.get(0001, 1, 1, 23, 59):
+        return -3
+    else:
+        raise ValueError("Problem with time: %s:%s" % hour, minute)
