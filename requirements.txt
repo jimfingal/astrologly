@@ -5,6 +5,7 @@ Werkzeug==0.10.4
 arrow==0.5.4
 beautifulsoup4==4.3.2
 coverage==4.0a5
+gunicorn==19.3.0
 itsdangerous==0.24
 mock==1.0.1
 nose==1.3.6
