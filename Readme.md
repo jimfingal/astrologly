@@ -139,9 +139,18 @@ GET [https://astrologly.herokuapp.com/natal/1983/01/31/12/45/ ](https://astrolog
 **Example Response:**
 
 ```json
+
 {
   "data": {
     "signs": {
+      "moon": {
+        "description": "The Scales", 
+        "element": "Air", 
+        "end": "October 23", 
+        "name": "Libra", 
+        "quality": "Cardinal", 
+        "start": "September 23"
+      }, 
       "rising": {
         "description": "The Twins", 
         "element": "Air", 

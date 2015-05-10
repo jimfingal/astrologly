@@ -1,9 +1,11 @@
 import json
 import arrow
-
+import os 
 import signs
 
-with open('data/moondata.json') as f:
+path = os.path.join(os.path.dirname(__file__), 'data/moondata.json')
+
+with open(path) as f:
     moondata = json.loads(f.read())
 
 
