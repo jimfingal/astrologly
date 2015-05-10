@@ -1,8 +1,6 @@
 from flask import Flask
 from flask import make_response
-from flask import render_template
 from flask import jsonify
-from flask import url_for
 from flask import redirect
 
 from werkzeug import exceptions
@@ -31,7 +29,6 @@ def create_app():
     def index():
         return redirect("https://github.com/jimmytheleaf/astrologly")
   
-
     @app.route('/natal/<int:year>/<int:month>/<int:day>/<int:hour>/<int:minute>/')
     @json_endpoint
     def reading(year, month, day, hour, minute):
