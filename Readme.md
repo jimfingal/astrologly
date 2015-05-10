@@ -1,19 +1,6 @@
-
-Ideas:
-
-- Astrology as a Service (AAAS)
-- Taurus-Driven-Development
-- RESTful API
-- Python Client
-- 100% unit test coverage
+![Logo](https://raw.githubusercontent.com/jimmytheleaf/astrologly/master/img/Astrologly.png)
 
 
-Areas:
+Astrologly is the first AAAS (Astrology as a Service) application.
 
-- Date 
-- Astrology Symbols --
-    - http://www.alwaysastrology.com/astrology-symbols.html
-    - Clasifying: http://www.alwaysastrology.com/classifying-zodiac-signs.html
-- Planets -- http://www.alwaysastrology.com/planets.html
-- Houses?
-- Aspects?
+We're changing disrupting the divination industry through offering elegant, REST-like APIs on top of deep occult knowledge graphs.
