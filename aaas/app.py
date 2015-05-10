@@ -1,9 +1,9 @@
 from flask import Flask
-from flask import Markup
 from flask import make_response
 from flask import render_template
 from flask import jsonify
 from flask import url_for
+from flask import redirect
 
 from werkzeug import exceptions
 
@@ -13,7 +13,6 @@ import arrow
 
 import signs
 import divination
-from www import homepage
 
 
 def json_endpoint(f):
@@ -29,13 +28,8 @@ def create_app():
     app = Flask(__name__)
 
     @app.route('/')
-    def home():
-        content = Markup(homepage.get_homepage())
-        return render_template(
-            'index.html',
-            content=content,
-            css=url_for('static', filename='github.css')
-        )
+    def index():
+        return redirect("https://github.com/jimmytheleaf/astrologly")
   
 
     @app.route('/natal/<int:year>/<int:month>/<int:day>/<int:hour>/<int:minute>/')
