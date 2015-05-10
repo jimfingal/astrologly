@@ -10,21 +10,38 @@ We are dedicated to our craft and practice Taurus-driven development (TDD) a sof
 
 ## API Usage
 
-Base Endpoint:
+**Base Endpoint:**
+
 ```http
 https://astrologly.herokuapp.com/
 ```
+
+**API Key:**
+
+Your API key is determined by taking the MD5 hash of the year, month, day, and military time of your birth, encoded in url-safe base64.
+
+Example:
+
+```python
+>>> from hashlib import md5
+>>> import base64
+>>> hash_digest = md5("198301312245").digest()
+>>> base64.urlsafe_b64encode(hash_digest)
+'zvOLyxDo5LDmI6jHyLDuog=='
+```
+
+
 ### Signs
 
 ####Get:
 
-Example Query:
+**Example Query:**
 
 ```http
 GET https://astrologly.herokuapp.com/signs/aries/
 ```
 
-Example Response:
+**Example Response:**
 
 ```json
 {
@@ -41,13 +58,13 @@ Example Response:
 
 ####List:
 
-Example Query:
+**Example Query:**
 
 ```http
 GET https://astrologly.herokuapp.com/signs/
 ```
 
-Example Response:
+**Example Response:**
 
 ```json
 {
@@ -75,19 +92,19 @@ Example Response:
 
 ## Natal Reading
 
-Format:
+**Format:**
 
 ```http
 /natal/<year>/<month>/<day>/
 ```
 
-Example Query:
+**Example Query:**
 
 ```http
 GET https://astrologly.herokuapp.com/natal/1983/01/31/
 ```
 
-Example Response:
+**Example Response:**
 
 ```json
 {
